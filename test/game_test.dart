@@ -12,7 +12,7 @@ final Card A_CARD = Card(5);
 
 void main() {
   test('can play a round with a fight', () {
-    var game = gameWith([Card(2)], [Card(3)]);
+    var game = gameFromCardValues([2], [3]);
 
     var result = game.play();
 
@@ -46,6 +46,18 @@ void main() {
 
     expect(result, equals(Result.equality()));
   });
+}
+
+Game gameFromCardValues(List<int> values1, List<int> values2) {
+  var player1 = Player(1);
+  for (var value in values1) {
+    player1.addCard(Card(value));
+  }
+  var player2 = Player(2);
+  for (var value in values2) {
+    player2.addCard(Card(value));
+  }
+  return Game(player1, player2);
 }
 
 Game gameWith(List<Card> cards1, List<Card> cards2) {
