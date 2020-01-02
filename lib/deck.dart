@@ -5,11 +5,7 @@ import 'package:war/card.dart';
 class Deck {
   final Queue<Card> _cards = Queue();
 
-  bool isEmpty() {
-    return _cards.isEmpty;
-  }
+  bool isEmpty() => _cards.isEmpty;
 
-  void add(Card card) {
-    _cards.add(card);
-  }
+  void add(Card card) => _cards.add(card);
 }

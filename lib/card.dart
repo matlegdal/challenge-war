@@ -1,9 +1,7 @@
 class Card {
   int value;
 
-  Card(int value) {
-    this.value = value;
-  }
+  Card(this.value);
 
   @override
   bool operator ==(Object other) =>

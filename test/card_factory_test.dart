@@ -2,10 +2,12 @@ import 'package:test/test.dart';
 import 'package:war/card.dart';
 import 'package:war/card_factory.dart';
 
+final NUMBER_VALUE = 4;
+final JACK = 'J';
+final JACK_VALUE = 11;
+final A_SUIT = 'H';
+
 void main() {
-  final NUMBER_VALUE = 4;
-  final JACK = 'J';
-  final JACK_VALUE = 11;
   var factory = CardFactory();
 
   test('given a numbered card it creates a card of same value', () {
@@ -25,4 +27,4 @@ void main() {
   });
 }
 
-String lineFrom(dynamic value) => '${value}H';
+String lineFrom(dynamic value) => '${value}$A_SUIT';

@@ -29,4 +29,5 @@ class CardFactory {
   bool isNumeric(String string) => num.tryParse(string) != null;
 }
 
-class WrongCardValueException {}
+class WrongCardValueException implements Exception {
+}

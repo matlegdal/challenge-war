@@ -4,16 +4,13 @@ import 'package:war/deck.dart';
 
 void main() {
   final CARD = Card(2);
+  var deck = Deck();
 
   test('is initially empty', () {
-    var deck = Deck();
-
     expect(deck.isEmpty(), isTrue);
   });
 
   test('can add cards', () {
-    var deck = Deck();
-
     deck.add(CARD);
 
     expect(deck.isEmpty(), isFalse);
