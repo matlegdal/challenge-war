@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
 import 'package:war/card.dart';
-import 'package:war/deck.dart';
+import 'package:war/player.dart';
 
 void main() {
   final CARD = Card(2);
-  var deck = Deck();
+  var deck = Player(1);
 
   test('is initially empty', () {
-    expect(deck.isEmpty(), isTrue);
+    expect(deck.hasNoCards(), isTrue);
   });
 
   test('can add cards', () {
-    deck.add(CARD);
+    deck.addCard(CARD);
 
-    expect(deck.isEmpty(), isFalse);
+    expect(deck.hasNoCards(), isFalse);
   });
 }
