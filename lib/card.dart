@@ -7,14 +7,20 @@ class Card {
   bool operator ==(Object other) =>
       identical(this, other) || other is Card && runtimeType == other.runtimeType && value == other.value;
 
-  @override
-  int get hashCode => value.hashCode;
-
-  bool operator <(Object other) =>
-      other is Card && runtimeType == other.runtimeType && value < other.value;
+  bool operator <(Object other) => other is Card && runtimeType == other.runtimeType && value < other.value;
 
   @override
   String toString() {
-    return 'Card{$value}';
+    switch (value) {
+      case 11:
+        return 'Jack';
+      case 12:
+        return 'Queen';
+      case 13:
+        return 'King';
+      case 14:
+        return 'As';
+    }
+    return value.toString();
   }
 }
