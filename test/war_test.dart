@@ -1,14 +1,12 @@
-import 'dart:math';
-
 import 'package:test/test.dart';
-import 'package:war/result.dart';
 import 'package:war/card.dart';
 import 'package:war/player.dart';
+import 'package:war/result.dart';
 import 'package:war/war.dart';
 
 final Card JACK = Card(11);
 final Card QUEEN = Card(12);
-final Card KING = Card(12);
+final Card KING = Card(13);
 final Card AS = Card(14);
 final Card A_CARD = Card(5);
 
@@ -29,6 +27,15 @@ void main() {
 
     var player1WonIn3Rounds = Result.won(1, 3);
     expect(result, equals(player1WonIn3Rounds));
+  });
+
+  test('can play a war that ends with a winner', () {
+    var war = warWith([AS, A_CARD, A_CARD, A_CARD, QUEEN, KING], [AS, A_CARD, A_CARD, A_CARD, JACK, QUEEN]);
+
+    var result = war.play();
+
+    var player1WonIn2Rounds = Result.won(1, 2);
+    expect(result, equals(player1WonIn2Rounds));
   });
 }
 

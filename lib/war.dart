@@ -1,7 +1,5 @@
-import 'package:war/result.dart';
-import 'package:war/player.dart';
-
-import 'card.dart';
+import 'player.dart';
+import 'result.dart';
 
 class War {
   Player player1;
@@ -14,27 +12,27 @@ class War {
 
     while (playersHaveCards()) {
       round++;
-      playRound();
+      try {
+        playRound();
+      } on PlayerWithNoCardsInAWar {
+        return Result.equality();
+      }
     }
 
-    var winner = getWinner();
-
-    return Result.won(winner, round);
+    return Result.won(getWinner(), round);
   }
 
   void playRound() {
-    var discardPile = <Card>[];
     var card1 = player1.nextCard();
     var card2 = player2.nextCard();
 
-    discardPile.addAll([card1, card2]);
-
     if (card1 == card2) {
-      // todo: implement war
+      card1 = player1.war();
+      card2 = player2.war();
     } else if (card1 < card2) {
-      player2.addAll(discardPile);
+      player2.wonOver(player1);
     } else {
-      player1.addAll(discardPile);
+      player1.wonOver(player2);
     }
   }
 
@@ -42,3 +40,5 @@ class War {
 
   int getWinner() => player1.hasCards() ? 1 : 2;
 }
+
+class PlayerWithNoCardsInAWar implements Exception {}

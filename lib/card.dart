@@ -12,4 +12,9 @@ class Card {
 
   bool operator <(Object other) =>
       other is Card && runtimeType == other.runtimeType && value < other.value;
+
+  @override
+  String toString() {
+    return 'Card{$value}';
+  }
 }
