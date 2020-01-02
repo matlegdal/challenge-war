@@ -1,6 +1,5 @@
 class Card {
   int value;
-//  Suit suit;
 
   Card(int value) {
     this.value = value;
@@ -13,5 +12,3 @@ class Card {
   @override
   int get hashCode => value.hashCode;
 }
-
-//enum Suit { Clubs, Diamonds, Hearts, Spades }
