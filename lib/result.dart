@@ -9,8 +9,8 @@ class Result {
     return Result._(true, 0, 0);
   }
 
-  static Result won(int winningPlayerNumber, int numberOfRounds) {
-    return Result._(false, winningPlayerNumber, numberOfRounds);
+  static _ResultBuilder player(int winningPlayerNumber) {
+    return _ResultBuilder(winningPlayerNumber);
   }
 
   @override
@@ -30,4 +30,14 @@ class Result {
 
   @override
   int get hashCode => isEquality.hashCode ^ winningPlayerNumber.hashCode ^ numberOfRounds.hashCode;
+}
+
+class _ResultBuilder {
+  final int _winningPlayerNumber;
+
+  _ResultBuilder(this._winningPlayerNumber);
+
+  Result wonAtRound(int numberOfRounds) {
+    return Result._(false, _winningPlayerNumber, numberOfRounds);
+  }
 }

@@ -19,7 +19,7 @@ class Game {
       }
     }
 
-    return Result.won(getWinner(), round);
+    return Result.player(getWinner()).wonAtRound(round);
   }
 
   void playRound() {

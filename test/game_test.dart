@@ -11,22 +11,12 @@ final Card AS = Card(14);
 final Card A_CARD = Card(5);
 
 void main() {
-  test('can play a round with a fight', () {
-    var game = gameFromCardValues([2], [3]);
-
-    var result = game.play();
-
-    var player2WonIn1Round = Result.won(2, 1);
-    expect(result, equals(player2WonIn1Round));
-  });
-
   test('can play multiple rounds with fights', () {
     var game = gameWith([AS, KING, QUEEN], [KING, QUEEN, JACK]);
 
     var result = game.play();
 
-    var player1WonIn3Rounds = Result.won(1, 3);
-    expect(result, equals(player1WonIn3Rounds));
+    expect(result, equals(Result.player(1).wonAtRound(3)));
   });
 
   test('can play successive wars that end with a winner', () {
@@ -35,8 +25,7 @@ void main() {
 
     var result = game.play();
 
-    var player1WonIn2Rounds = Result.won(1, 2);
-    expect(result, equals(player1WonIn2Rounds));
+    expect(result, equals(Result.player(1).wonAtRound(2)));
   });
 
   test('can play a war that ends as equality', () {
