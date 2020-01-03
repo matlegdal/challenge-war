@@ -34,9 +34,9 @@ void main() {
     var player1 = playerWithDiscardPile(1, CARD_1);
     var player2 = playerWithDiscardPile(2, CARD_2);
 
-    player1.wonOver(player2);
+    player2.wonOver(player1);
 
-    expect(player1.cards, equals([CARD_1, CARD_2]));
+    expect(player2.cards, equals([CARD_1, CARD_2]));
   });
   
   test('when win then both discard piles are emptied', (){

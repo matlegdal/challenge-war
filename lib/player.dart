@@ -27,10 +27,17 @@ class Player {
   }
 
   void wonOver(Player otherPlayer) {
-    _cards.addAll(_discardPile);
-    _cards.addAll(otherPlayer._discardPile);
+    _addDiscardPiles(otherPlayer);
     _discardPile.clear();
     otherPlayer._discardPile.clear();
+  }
+
+  void _addDiscardPiles(Player otherPlayer) {
+    var player1 = number == 1 ? this : otherPlayer;
+    var player2 = number == 2 ? this : otherPlayer;
+
+    _cards.addAll(player1._discardPile);
+    _cards.addAll(player2._discardPile);
   }
 
   Card nextCard() {
@@ -38,7 +45,7 @@ class Player {
       var card = _cards.removeFirst();
       _discardPile.add(card);
       return card;
-    } catch (e) {
+    } on StateError {
       throw PlayerHasNoCards();
     }
   }
